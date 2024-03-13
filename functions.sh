@@ -23,7 +23,7 @@ paru -S $@ --needed --noconfirm
 # to move config files
 function mvc {
 mkdir -p $2
-cp -rf $HOME/dotfiles/$1 $2    # doesn't have teh variable because its with sudo (I don't know what i meant anymore)
+cp -rf $HOME/dotfiles/$1 $2
 }
 
 # to have a more compact xdg-user-dirs :/
