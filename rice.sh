@@ -43,6 +43,12 @@ export GOPATH="$XDG_DATA_HOME"/go
 cd $HOME
 paru -Syu --noconfirm
 
+# removing tmp packages
+paru -Rsn $(paru -Qdtq) 2>/dev/null --noconfirm
+
+# isntalling rust
+install rust
+
 # Installing extra firmware to get rid of the warnings when installing packages :/
 install mkinitcpio-firmware
 
@@ -73,16 +79,18 @@ xdg DESKTOP $HOME/misc/desktop
 xdg TEMPLATES $HOME/documents/templates
 
 # extra directory(s)
-mkdir $HOME/documents/install_media
+# mkdir $HOME/documents/install_media
 
 # setting up default applications
 mvc mimeapps.list $HOME/.config
 
 # setting up scripts :/
 install aria2
-sudo cp $HOME/tmp-june/scripts/* /opt/
-ls -A1 $HOME/tmp-june/scripts | xargs -i echo /opt/{} | xargs -L1 sudo chmod +x
+sudo cp $HOME/tmp-june/scripts/* /usr/local/bin/
+ls -A1 $HOME/tmp-june/scripts | xargs -i echo /usr/local/bin/{} | xargs -L1 sudo chmod +x
 cp -r $HOME/tmp-june/scripts-pic $HOME/pictures
+sudo mv /opt/hysome /usr/local/bin
+sudo chmod +x /usr/local/bin/hysome
 
 # setting up wallpapers :/
 install feh
@@ -151,6 +159,12 @@ fsudo mvc reflector.conf /etc/xdg/reflector/
 sudo systemctl enable reflector.service --now
 sudo reflector --country 'Germany' --latest 30 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
+# Setting up audio
+install alsa-ucm-conf
+install pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber carla pavucontrol
+mvc 51-alsa-disable.lua $HOME/.config/wireplumber/main.lua.d/
+systemctl enable --user pipewire pipewire-pulse wireplumber
+
 # picom setup
 install picom-git
 mvc picom.conf $HOME/.config/picom/
@@ -168,6 +182,37 @@ mkdir -p $HOME/.config/awesome/
 mvc rc.lua $HOME/.config/awesome
 mvc mytheme.lua $HOME/.config/awesome
 git clone https://github.com/Elv13/collision $HOME/.config/awesome/collision
+
+# wayland setup
+install wayland lib32-wayland wayland-protocols qt5-wayland qt6-wayland xorg-xwayland wlr-randr python-pywayland
+
+# Hyprland setup
+install wlroots-hidpi-xprop
+install hyprland wofi hyprlock hyprpaper xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker-git wl-clipboard dunst
+mvc hyprland.conf $HOME/.config/hypr
+mvc hyprlock.conf $HOME/.config/hypr
+mvc hyprpaper.conf $HOME/.config/hypr
+
+# # installing ydotool
+# paru -S scdoc --noconfirm && \
+# git clone https://github.com/ReimuNotMoe/ydotool.git && \
+# cd ydotool && \
+# mkdir build && \
+# cd build && \
+# cmake .. && \
+# make -j $(nproc) && \
+# sudo make install && \
+# cd $HOME && \
+# rm -rf ydotool
+# echo 'ALL ALL=(ALL) NOPASSWD: /usr/local/bin/ydotool' | sudo EDITOR='tee -a' visudo
+# echo 'ALL ALL=(ALL) NOPASSWD: /usr/local/bin/ydotoold' | sudo EDITOR='tee -a' visudo
+
+# waybar setup
+install waybar
+mvc waybar $HOME/.config
+
+# eww setup
+install eww-tray-wayland-git
 
 # ---drivers setup---
 if [ $drivers = "nvidia" ]; then
@@ -196,13 +241,13 @@ fsudo mvc power.rasi /root/.config/rofi
 fsudo mvc rofi3.druncache $HOME/.cache
 
 # themes
-install qogir-gtk-theme oxygen-cursors bibata-cursor-theme-bin lxappearance
-mvc settings.ini $HOME/.config/gtk-3.0
-mvc .gtkrc-2.0 $HOME
-mvc index.theme $HOME/.icons/default/
-fsudo mvc settings.ini /root/.config/gtk-3.0
-fsudo mvc .gtkrc-2.0 /root/
-fsudo mvc index.theme /root/.icons/default/
+install qogir-gtk-theme oxygen-cursors bibata-cursor-theme-bin lxappearance nwg-look
+# mvc settings.ini $HOME/.config/gtk-3.0
+# mvc .gtkrc-2.0 $HOME
+# mvc index.theme $HOME/.icons/default/
+# fsudo mvc settings.ini /root/.config/gtk-3.0
+# fsudo mvc .gtkrc-2.0 /root/
+# fsudo mvc index.theme /root/.icons/default/
 
 # installing SDDM
 install sddm sddm-sugar-candy-git
@@ -236,9 +281,15 @@ sudo systemctl restart cups
 fi
 
 # Setting up bluetooth
-install bluez bluez-utils
-install blueman
-sudo systemctl start bluetooth.service blueman-mechanism.service
+install bluez bluez-utils bluez-libs bluez-utils
+install blueman bluez-tools
+sudo systemctl enable --now bluetooth.service blueman-mechanism.service
+
+# Setting up dkms
+install dkms linux-headers
+
+# Setting up low lateny bluetooth
+install xpadneo-dkms
 
 # Setting up redshift
 install redshift-minimal
@@ -250,11 +301,6 @@ mvc wgetrc $HOME/.config/wget
 
 # Setting up timeshift
 install timeshift
-sudo mv $HOME/tmp-june/scripts/timeshift-setup.sh /opt/
-cd /opt
-sudo curl -LO https://raw.githubusercontent.com/jenjiru/dotfiles/main/timeshift-setup.sh
-sudo chmod +x /opt/timeshift-setup.sh
-cd $HOME
 
 # Setting up flameshot
 install flameshot
@@ -264,13 +310,9 @@ mvc flameshot.ini $HOME/.config/flameshot
 install evince-no-gnome
 gsettings set org.gnome.Evince page-cache-size 'uint32 1000'
 
-# Setting up audio
-install alsa-ucm-conf
-install pipewire pipewire-alsa pipewire-jack pipewire-pulse gst-plugin-pipewire libpulse wireplumber carla pavucontrol
-systemctl enable --user pipewire-pulse.service
-
 # Installing packages
-install libreoffice-fresh libreoffice-fresh-de nemo signal-desktop lf-bin eza htop tldr bat downgrade procs rsync man xdg-ninja exfat-utils fzf galculator btop bottom arandr mpv peazip cups qbittorrent obsidian zip vscodium-bin ranger xterm stress ntfs-3g xorg-xev advcpmv blanket polkit-gnome cmake wget yarn paruz rawtherapee ninja meson gparted dnsutils
+install libreoffice-fresh libreoffice-fresh-de nemo signal-desktop lf-bin eza htop tldr bat downgrade procs rsync man xdg-ninja exfat-utils fzf galculator btop bottom arandr mpv peazip cups qbittorrent obsidian zip vscodium-bin ranger xterm stress ntfs-3g xorg-xev advcpmv blanket polkit-gnome cmake wget yarn paruz rawtherapee ninja meson gparted dnsutils socat xdotool tofi blueberry overskride chromium nvtop
+
 
 # Setting up Neovim
 install neovim vim-commentary neovim-surround vim-visual-multi neovim-nerdtree vim-devicons # vim-nerdtree-syntax-highlight nvim-packer-git :{
@@ -297,7 +339,7 @@ touch $HOME/.config/ripgrep/ripgreprc
 install syncthing
 echo "" >> .config/awesome/rc.lua
 echo "-- syncthing" >> .config/awesome/rc.lua
-echo "awful.spawn.with_shell("syncthing")" >> .config/awesome/rc.lua
+echo 'awful.spawn.with_shell("syncthing")' >> .config/awesome/rc.lua
 sudo ufw allow 631/tcp
 sudo ufw allow 515/tcp
 
@@ -321,10 +363,14 @@ mvc extension-preferences.json $HOME/.librewolf/*.default-default/
 
 # -------------- :( --------------
 
+# remove tmp packages
+paru -Rsn $(paru -Qdtq) 2>/dev/null --noconfirm
+
 # remove script :/
 sudo rm -r $HOME/tmp-june
 sudo rm -r $HOME/dotfiles
 rm -f $HOME/rice.sh
+rm -f $HOME/rice_variables
 
 # possibly starting main-pc.sh :/
 if [ "$pc_type" = "main" ]
