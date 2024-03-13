@@ -188,10 +188,14 @@ install wayland lib32-wayland wayland-protocols qt5-wayland qt6-wayland xorg-xwa
 
 # Hyprland setup
 install wlroots-hidpi-xprop
-install hyprland wofi hyprlock hyprpaper xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker-git wl-clipboard dunst
+install hyprland hyprlock hyprpaper xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker-git wl-clipboard dunst
 mvc hyprland.conf $HOME/.config/hypr
 mvc hyprlock.conf $HOME/.config/hypr
 mvc hyprpaper.conf $HOME/.config/hypr
+
+# wofi setup
+install wofi
+mvc wofi $HOME/.config
 
 # # installing ydotool
 # paru -S scdoc --noconfirm && \
