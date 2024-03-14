@@ -21,6 +21,7 @@ echo btw > /etc/hostname
 pacman -Syu networkmanager base-devel btrfs-progs gptfdisk zsh sudo ttf-dejavu sbctl amd-ucode polkit-gnome vim --noconfirm
 
 # Unified Kernel Image Setup
+sed -i '/^MODULES=/c\MODULES=(amdgpu)' /etc/mkinitcpio.conf
 sed -i '/^HOOKS=/c\HOOKS=(base systemd plymouth modconf keyboard block filesystems btrfs sd-encrypt fsck)' /etc/mkinitcpio.conf
 
 echo "fbcon=nodefer rw rd.luks.allow-discards quiet bgrt_disable root=LABEL=system rootflags=subvol=@root,rw splash vt.global_cursor_default=0" > /etc/kernel/cmdline
