@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# disk=/dev/nvme0n1
-
 # Set the time zone to Berlin
 ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 hwclock --systohc
