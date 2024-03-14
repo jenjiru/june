@@ -552,7 +552,7 @@ cat <<'END'
 END
 sleep 0.1
 
-while kill -0 $conditions-check_PID 2>/dev/null; do
+while kill -0 $conditions_check_PID 2>/dev/null; do
     echo "Waiting for conditions-check.sh to finish..."
     sleep 1
 done
