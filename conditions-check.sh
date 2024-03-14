@@ -19,5 +19,3 @@ if [ -f "error.sh" ]; then
     echo "rm ./error.sh" >> "error.sh"
     echo "exit 1" >> "error.sh"
 fi
-
-sleep 10
