@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo pacman -S sbctl --noconfirm --needed
+pacman -Sy
+pacman -S sbctl --noconfirm --needed
 
 # Check if the system is booted with a 64-bit UEFI
 if [ "$(cat /sys/firmware/efi/fw_platform_size  2>/dev/null)" != "64" ]; then
