@@ -557,7 +557,7 @@ while kill -0 $conditions_check_PID 2>/dev/null; do
     sleep 1
 done
 
-echo "conditions-check.sh has finished."
+bash ./error.sh
 
 #clear
 echo ""
