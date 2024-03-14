@@ -40,9 +40,15 @@ useradd -m -G wheel jen
 echo "jen:${usr_passwd}" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers
 
+# installing paru
+{ git clone https://aur.archlinux.org/paru.git ; cd paru ; makepkg -si --noconfirm ; sudo rm -r $HOME/paru ;} || { git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; sudo rm -r $HOME/paru-bin ;}
+cd $HOME
+paru -Syu --noconfirm
+
 # plymouth
 pacman -S plymouth --noconfirm
-plymouth-set-default-theme -R spinner
+paru -S plymouth-theme-neat --noconfirm
+plymouth-set-default-theme -R neat
 sbctl generate-bundles -s
 sbctl enroll-keys -m
 
