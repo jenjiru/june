@@ -559,7 +559,7 @@ done
 
 echo "conditions-check.sh has finished."
 
-clear
+#clear
 echo ""
 sleep 0.1
-clear
+#clear
