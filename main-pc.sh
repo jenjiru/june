@@ -18,7 +18,7 @@ echo '# solaar' | sudo tee -a /usr/local/bin/wm-program-check
 echo 'slc=$(ps aux | grep solaar > /dev/null | wc -l) && if [ $slc -eq 1 ]; then solaar -w hide &; fi' | sudo tee -a /usr/local/bin/wm-program-check
 
 # Installing discord
-install discord-screenaudio
+install discord-screenaudio discord
 echo '' | sudo tee -a /usr/local/bin/wm-program-check
 echo '# discord' | sudo tee -a /usr/local/bin/wm-program-check
 echo 'dlc=$(ps aux | grep discord-screenaudio > /dev/null | wc -l) && if [ $dlc -le 2 ]; then discord-screenaudio &; fi' | sudo tee -a /usr/local/bin/wm-program-check
