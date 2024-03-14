@@ -14,3 +14,5 @@ if sbctl status | grep -qE "Setup Mode.*Disabled"; then
     echo -e "\033[0;31mError! Not booted in Secure Boot setup mode\033[0m" >&2
     exit 1
 fi
+
+sleep 10
