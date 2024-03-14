@@ -1,8 +1,11 @@
 #!/bin/bash
 
-source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/conditions-check.sh)
+curl -LO https://raw.githubusercontent.com/jenjiru/june/main/conditions-check.sh
+bash conditions-check.sh > /dev/null 2>&1 &
+conditions_check_PID=$!
 
 source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/logo.sh)
+
 
 loadkeys de
 
