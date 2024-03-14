@@ -515,6 +515,51 @@ cat <<'END'
 END
 sleep 0.1
 
+
+
+if kill -0 $conditions_check_PID 2>/dev/null; then
+while kill -0 $conditions_check_PID 2>/dev/null; do
+clear
+cat <<'END'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .,,,,,,,,,,,,,,,,,,,,,,,,'
+  .kWWWWWWWWWWWWWWWWWWWWWWWW0'
+   ,cccccccccccccccccccccccc;.
+END
+sleep 0.4
+
+clear
+sleep 0.4
+done
+else
 clear
 cat <<'END'
 
@@ -551,15 +596,11 @@ cat <<'END'
    ,cccccccccccccccccccccccc;.
 END
 sleep 0.1
-
-while kill -0 $conditions_check_PID 2>/dev/null; do
-    echo "Waiting for conditions-check.sh to finish..."
-    sleep 1
-done
+fi
 
 bash ./error.sh
 
 #clear
-echo ""
-sleep 0.1
+#echo ""
+#sleep 0.1
 #clear
