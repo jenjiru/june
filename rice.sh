@@ -312,7 +312,7 @@ install evince-no-gnome
 gsettings set org.gnome.Evince page-cache-size 'uint32 1000'
 
 # Installing packages
-install libreoffice-fresh libreoffice-fresh-de nemo signal-desktop lf-bin eza htop tldr bat downgrade procs rsync man xdg-ninja exfat-utils fzf galculator btop bottom arandr mpv peazip cups qbittorrent obsidian zip vscodium-bin ranger xterm stress ntfs-3g xorg-xev advcpmv blanket polkit-gnome cmake wget yarn paruz rawtherapee ninja meson gparted dnsutils socat xdotool tofi blueberry overskride chromium nvtop
+install libreoffice-fresh libreoffice-fresh-de nemo signal-desktop lf-bin eza htop tldr bat downgrade procs rsync man xdg-ninja exfat-utils fzf galculator btop bottom arandr mpv peazip cups qbittorrent obsidian zip vscodium-bin ranger xterm stress ntfs-3g xorg-xev advcpmv blanket polkit-gnome cmake wget yarn paruz rawtherapee ninja meson gparted dnsutils socat xdotool tofi blueberry overskride chromium nvtop hyprshot
 
 
 # Setting up Neovim
