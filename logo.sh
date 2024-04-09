@@ -599,7 +599,7 @@ sleep 0.1
 fi
 
 clear
-bash ./error.sh
+
 
 #clear
 #echo ""
