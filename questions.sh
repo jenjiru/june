@@ -67,9 +67,9 @@ fi
 
 # --------------------------- Q-pc-type ---------------------------
 pc_type=$(whiptail --title "PC type" --notags --nocancel --menu "Select the PC type"  25  78  5 \
-        "general" "General" \
         "main" "Main PC" \
-        "laptop" "Laptop"  3>&1  1>&2  2>&3)
+        "laptop" "Laptop" \
+        "laptop_mp" "Laptop MP"  3>&1  1>&2  2>&3)
 
 if [ "$disk" != "/dev/vda" ]; then
 	if [ "$pc_type" = "main" ]; then
@@ -78,7 +78,10 @@ if [ "$disk" != "/dev/vda" ]; then
 	elif [ "$pc_type" = "laptop" ]; then
 		res=1080p
 		drivers=none
-	fi
+	elif [ "$pc_type" = "laptop_mp" ]; then
+        res=1080p
+        drivers=nvidia
+    fi
 fi
 
 # --------------------------- Q-drivers ---------------------------

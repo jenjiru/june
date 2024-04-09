@@ -217,7 +217,12 @@ install eww-tray-wayland-git
 
 # ---drivers setup---
 if [ $drivers = "nvidia" ]; then
-        install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia
+        install nvidia nvidia-utils lib32-nvidia-utils nvidia-settings opencl-nvidia nvidia-dkms
+		echo "env = LIBVA_DRIVER_NAME,nvidia" > $HOME/.config/hypr/hyprland.conf
+		echo "env = XDG_SESSION_TYPE,wayland" > $HOME/.config/hypr/hyprland.conf
+		echo "env = GBM_BACKEND,nvidia-drm" > $HOME/.config/hypr/hyprland.conf
+		echo "env = __GLX_VENDOR_LIBRARY_NAME,nvidia" > $HOME/.config/hypr/hyprland.conf
+		echo "env = WLR_NO_HARDWARE_CURSORS,1" > $HOME/.config/hypr/hyprland.conf
 elif [ $drivers = "amd" ]; then
 	install mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 elif [ $drivers = "testing" ]; then
