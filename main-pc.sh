@@ -5,7 +5,7 @@
 # Updating system
 paru -Syu --noconfirm
 
-install etcher-bin gimp bitwarden spotify lutris multimc-bin jre-openjdk wally-cli qtwebflix-git wacom-settings-git libfido2 yubikey-personalization-gui tidal-hifi-bin avidemux-qt youtube-dl upscayl-bin
+install etcher-bin gimp bitwarden spotify lutris multimc-bin jre-openjdk zsa-wally-bin qtwebflix-git wacom-settings-git libfido2 yubikey-personalization-gui tidal-hifi-bin avidemux-qt youtube-dl upscayl-bin
 
 # tuta
 install tutanota-desktop-bin
@@ -45,6 +45,8 @@ rm .local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libf
 ln -s /usr/lib/i386-linux-gnu/libfontconfig.so.1 ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libfontconfig.so.1
 install lib32-fontconfig
 sudo setcap 'CAP_SYS_NICE=eip' $(which gamescope)
+sudo rm /usr/share/applications/steam.desktop
+fsudo mvc steam.destop /usr/share/applications
 
 # thunderstore
 install r2modman-bin
