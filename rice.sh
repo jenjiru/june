@@ -288,7 +288,7 @@ fi
 
 # Setting up bluetooth
 install bluez bluez-utils bluez-libs bluez-utils
-install bluez-tools overskride
+install bluez-tools overskride blueberry
 sudo systemctl enable --now bluetooth.service blueman-mechanism.service
 
 # Setting up dkms
