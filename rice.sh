@@ -294,8 +294,10 @@ sudo systemctl enable --now bluetooth.service blueman-mechanism.service
 # Setting up dkms
 install dkms linux-headers
 
-# Setting up low lateny bluetooth
+# Setting up controllers
 install xpadneo-dkms
+install joycond-git
+sudo systemctl enable joycond
 
 # Setting up redshift
 install redshift-minimal
