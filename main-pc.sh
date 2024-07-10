@@ -5,7 +5,7 @@
 # Updating system
 paru -Syu --noconfirm
 
-install etcher-bin gimp bitwarden spotify lutris multimc-bin jre-openjdk zsa-wally-bin qtwebflix-git wacom-settings-git libfido2 yubikey-personalization-gui tidal-hifi-bin avidemux-qt youtube-dl upscayl-bin
+install etcher-bin gimp bitwarden spotify lutris multimc-bin jre-openjdk zsa-wally-cli qtwebflix-git wacom-settings-git libfido2 yubikey-personalization-gui tidal-hifi-bin avidemux-qt youtube-dl upscayl-bin
 
 # tuta
 install tutanota-desktop-bin
