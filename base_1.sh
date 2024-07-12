@@ -28,7 +28,7 @@ fi
 
 sed -i '/^HOOKS=/c\HOOKS=(base systemd plymouth modconf keyboard keymap block filesystems btrfs sd-encrypt fsck)' /etc/mkinitcpio.conf
 
-echo "fbcon=nodefer rw rd.luks.allow-discards quiet bgrt_disable root=LABEL=system rootflags=subvol=@root,rw splash vt.global_cursor_default=0" > /etc/kernel/cmdline
+echo "fbcon=rd.driver.pre=vfio-pci amd_iommu=on iommu=pt video=efifb:off nodefer rw rd.luks.allow-discards quiet bgrt_disable root=LABEL=system rootflags=subvol=@root,rw splash vt.global_cursor_default=0" > /etc/kernel/cmdline
 
 echo "system /dev/disk/by-partlabel/cryptsystem none timeout=180,tpm2-device=auto" > /etc/crypttab.initramfs   # system /dev/disk/by-partlabel/cryptsystem none timeout=180,tpm2-device=auto
 

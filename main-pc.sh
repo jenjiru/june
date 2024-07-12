@@ -85,6 +85,10 @@ sudo usermod -G libvirt -a $USER
 # sudo systemctl restart libvirtd
 # sudo virsh pool-list | grep default
 
+# gpu passthrough
+install virt-viewer vde2 ebtables iptables-nft nftables bridge-utils edk2-ovmf swtpm
+
+
 # a2ln
 install a2ln
 systemctl --user enable a2ln
