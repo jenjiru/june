@@ -189,6 +189,11 @@ install hyprland hyprlock hyprpaper xdg-desktop-portal-hyprland xdg-desktop-port
 mvc hyprland.conf $HOME/.config/hypr
 mvc hyprlock.conf $HOME/.config/hypr
 mvc hyprpaper.conf $HOME/.config/hypr
+if [ $drivers = "amd" ]; then
+ln -sf /dev/dri/by-path/pci-0000:03:00.0-card $HOME/.config/hypr/ecard
+ln -sf /dev/dri/by-path/pci-0000:18:00.0-card $HOME/.config/hypr/icard
+fi
+
 
 # wofi setup
 install wofi
