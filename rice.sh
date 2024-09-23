@@ -194,6 +194,9 @@ ln -sf /dev/dri/by-path/pci-0000:03:00.0-card $HOME/.config/hypr/ecard
 ln -sf /dev/dri/by-path/pci-0000:18:00.0-card $HOME/.config/hypr/icard
 fi
 
+# Plymouth theming
+paru -S plymouth-theme-neat --noconfirm
+sudo plymouth-set-default-theme -R neat
 
 # wofi setup
 install wofi
