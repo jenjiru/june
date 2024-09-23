@@ -22,13 +22,15 @@ export testing; export res; export drivers; export pc_type; export usr_passwd; e
 
 # base install first step
 source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/base_0.sh)
+read
 
 # base install second step
 curl -LO https://raw.githubusercontent.com/jenjiru/june/main/base_1.sh
 mv base_1.sh /mnt/
 chmod +x /mnt/base_1.sh
+read
 arch-chroot "/mnt" "/bin/bash" -c "bash /base_1.sh ; rm /base_1.sh ; exit"
-
+read
 # rice
 echo "export testing=\"$testing\"" >> ./rice_variables
 echo "export res=\"$res\"" >> ./rice_variables
