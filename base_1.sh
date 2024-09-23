@@ -50,6 +50,7 @@ echo '%wheel ALL=(ALL) ALL' > /etc/sudoers
 { git clone https://aur.archlinux.org/paru.git ; cd paru ; makepkg -si --noconfirm ; sudo rm -r $HOME/paru ;} || { git clone https://aur.archlinux.org/paru-bin.git ; cd paru-bin ; makepkg -si --noconfirm ; sudo rm -r $HOME/paru-bin ;}
 cd $HOME
 paru -Syu --noconfirm
+read
 
 # plymouth
 pacman -S plymouth --noconfirm
