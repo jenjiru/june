@@ -46,4 +46,11 @@ useradd -m -G wheel jen
 echo "jen:${usr_passwd}" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers
 
+# plymouth
+pacman -S plymouth --noconfirm
+plymouth-set-default-theme -R Spinfinity
+# sudo sbctl generate-bundles -s
+# sudo sbctl enroll-keys -m
+read
+
 systemctl enable NetworkManager.service
