@@ -5,7 +5,7 @@ bash conditions-check.sh > /dev/null 2>&1 &
 conditions_check_PID=$!
 
 source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/logo.sh)
-source ./error.sh
+sh ./error.sh
 
 loadkeys de
 
