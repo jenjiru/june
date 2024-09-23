@@ -41,7 +41,11 @@ curl -LO https://raw.githubusercontent.com/jenjiru/june/main/rice.sh
 mv rice.sh /mnt/home/jen
 chmod +x /mnt/home/jen/rice.sh
 
+read
+
 arch-chroot "/mnt" "/bin/bash" -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo ; su -l -c 'bash rice.sh' jen ; exit"
+
+read
 
 # reboot in to bios
 if [ "$disk" != "/dev/vda" ]; then
