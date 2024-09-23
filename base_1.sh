@@ -46,9 +46,4 @@ useradd -m -G wheel jen
 echo "jen:${usr_passwd}" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers
 
-# plymouth
-pacman -S plymouth --noconfirm
-sbctl generate-bundles -s
-sbctl enroll-keys -m
-
 systemctl enable NetworkManager.service
