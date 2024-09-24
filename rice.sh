@@ -77,6 +77,8 @@ xdg VIDEOS $HOME/pictures/videos
 xdg DESKTOP $HOME/misc/desktop
 xdg TEMPLATES $HOME/documents/templates
 
+read
+
 # extra directory(s)
 # mkdir $HOME/documents/install_media
 
