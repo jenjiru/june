@@ -16,9 +16,9 @@ sudo pacman -Syu --noconfirm
 
 # getting functions
 source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/functions.sh)
+read
 
 # installing packages needed for the script :/
-sudo pacmab -Syu
 sudo pacman -S git base-devel imagemagick --needed --noconfirm
 read
 
