@@ -16,7 +16,7 @@ echo KEYMAP=de-latin1 > /etc/vconsole.conf
 echo btw > /etc/hostname
 
 # more packages
-pacman -Syu networkmanager git base-devel btrfs-progs gptfdisk zsh sudo ttf-dejavu sbctl amd-ucode polkit-gnome vim --noconfirm
+pacman -Syu networkmanager base-devel btrfs-progs gptfdisk zsh sudo ttf-dejavu sbctl amd-ucode polkit-gnome vim --noconfirm
 
 # Unified Kernel Image Setup
 if [ $drivers = "amd" ]; then
