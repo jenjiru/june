@@ -16,11 +16,9 @@ sudo pacman -Syu --noconfirm
 
 # getting functions
 source <(curl -s https://raw.githubusercontent.com/jenjiru/june/main/functions.sh)
-read
 
 # installing packages needed for the script :/
 sudo pacman -S git base-devel imagemagick --needed --noconfirm
-read
 
 # downloading xyz for later use :/
 # dotfiles
@@ -47,9 +45,6 @@ makepkg -si --noconfirm ; sudo rm -r $HOME/paru ;} || { git clone https://aur.ar
 paru-bin; makepkg-si --noconfirm; sudo rm -r $HOME/paru-bin ;}
 cd $HOME
 paru -Syu --noconfirm
-
-echo "paru done"
-read
 
 # removing tmp packages
 paru -Rsn $(paru -Qdtq) 2>/dev/null --noconfirm
