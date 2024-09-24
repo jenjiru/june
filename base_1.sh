@@ -51,8 +51,6 @@ pacman -S plymouth --noconfirm
 plymouth-set-default-theme -R spinner
 
 sbctl generate-bundles -s
-read
 sbctl enroll-keys -m
-read
 
 systemctl enable NetworkManager.service
