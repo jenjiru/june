@@ -43,7 +43,7 @@ chmod +x /mnt/home/jen/rice.sh
 
 read
 
-arch-chroot "/mnt" "/bin/bash" -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo ; su -l -c 'bash rice.sh' jen ; exit"
+# arch-chroot "/mnt" "/bin/bash" -c "echo '%wheel ALL=(ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo ; su -l -c 'bash rice.sh' jen ; exit"
 
 read
 
