@@ -50,7 +50,9 @@ echo '%wheel ALL=(ALL) ALL' > /etc/sudoers
 pacman -S plymouth --noconfirm
 plymouth-set-default-theme -R spinner
 
-sudo sbctl generate-bundles -s
-sudo sbctl enroll-keys -m
+sbctl generate-bundles -s
+read
+sbctl enroll-keys -m
+read
 
 systemctl enable NetworkManager.service
