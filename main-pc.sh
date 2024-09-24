@@ -8,8 +8,17 @@ paru -Syu --noconfirm
 install etcher-bin gimp bitwarden spotify lutris multimc-bin jre-openjdk zsa-wally-cli qtwebflix-git wacom-settings-git libfido2 yubikey-personalization-gui tidal-hifi-bin avidemux-qt youtube-dl upscayl-bin
 
 # tuta
-install tutanota-desktop-bin
-sudo mvc tutanota-desktop.desktop $HOME/.local/share/applications/
+curl -L -o tutanota-desktop-linux.AppImage https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
+sudo mv tutanota-desktop-linux.AppImage /usr/local/bin/tutanota-desktop-linux
+sudo chmod +x /usr/local/bin/tutanota-desktop-linux
+cd /usr/local/bin/
+sudo /usr/local/bin/tutanota-desktop-linux --appimage-extract
+cd $HOME
+sudo mkdir $HOME/.local/share/applications
+fsudo mvc tutanota-desktop.desktop $HOME/.local/share/applications/
+sudo mkdir $HOME/.local/share/icons
+sudo cp /usr/local/bin/squashfs-root/tutanota-desktop.png $HOME/.local/share/icons
+sudo rm -r /usr/local/bin/squashfs-root
 
 # Installing solaar
 install solaar
