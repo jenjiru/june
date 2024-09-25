@@ -270,7 +270,11 @@ install qogir-gtk-theme oxygen-cursors bibata-cursor-theme-bin lxappearance nwg-
 # fsudo mvc index.theme /root/.icons/default/
 
 # installing SDDM
-install sddm sddm-sugar-candy-git
+install sddm sddm qt5‑graphicaleffects qt5‑quickcontrols2 qt5‑svgz
+curl -LO https://gitlab.com/Matt.Jolly/sddm-eucalyptus-drop/-/archive/master/sddm-eucalyptus-drop-master.zip
+unzip sddm-eucalyptus-drop-master.zip
+rm -rf sddm-eucalyptus-drop-master.zip
+sudo mv sddm-eucalyptus-drop-master /usr/share/sddm/themes
 sudo systemctl enable sddm.service
 fsudo mvc sddm.conf /etc/sddm.conf.d/
 fsudo mvc theme.conf /usr/share/sddm/themes/sugar-candy/
