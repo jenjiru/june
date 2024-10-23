@@ -169,7 +169,7 @@ mvc 51-alsa-disable.lua $HOME/.config/wireplumber/main.lua.d/
 systemctl enable --user pipewire pipewire-pulse wireplumber
 
 # picom setup
-install picom-git
+install picom
 mvc picom.conf $HOME/.config/picom/
 
 # alacritty config
@@ -307,7 +307,7 @@ fi
 # Setting up bluetooth
 install bluez bluez-utils bluez-libs bluez-utils
 install bluez-tools overskride blueberry
-sudo systemctl enable --now bluetooth.service blueman-mechanism.service
+sudo systemctl enable --now bluetooth.service
 
 # Setting up dkms
 install dkms linux-headers
