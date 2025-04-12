@@ -34,6 +34,7 @@ sudo pacman -Sy
 
 # updating pacman keyring
 sudo pacman-key --populate archlinux
+read
 
 # moving go directory :/
 export GOPATH="$XDG_DATA_HOME"/go
@@ -44,6 +45,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 makepkg -si --noconfirm ; sudo rm -r $HOME/paru ;} || { git clone https://aur.archlinux.org/paru-bin.git; cd
 paru-bin; makepkg-si --noconfirm; sudo rm -r $HOME/paru-bin ;}
 cd $HOME
+read
 paru -Syu --noconfirm
 
 # removing tmp packages
