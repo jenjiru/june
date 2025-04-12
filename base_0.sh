@@ -38,7 +38,7 @@ mkdir /mnt/efi
 mount LABEL=EFI /mnt/efi
 
 # keyring
-pacman -Sy archlinux-keyring
+pacman -Sy archlinux-keyring --noconfirm
 
 # Install Base System
 pacstrap /mnt base linux linux-firmware
