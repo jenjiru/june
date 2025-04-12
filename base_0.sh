@@ -38,7 +38,7 @@ mkdir /mnt/efi
 mount LABEL=EFI /mnt/efi
 
 # Install Base System
-pacstrap /mnt base linux linux-firmware
-genfstab -L -p /mnt >> /mnt/etc/fstab
-sed -i 's/LABEL=swap/\/dev\/mapper\/swap/g' /mnt/etc/fstab
-echo "swap /dev/disk/by-partlabel/cryptswap /dev/urandom swap,offset=2048,cipher=aes-xts-plain64,size=256" >> /mnt/etc/crypttab
+#pacstrap /mnt base linux linux-firmware
+#genfstab -L -p /mnt >> /mnt/etc/fstab
+#sed -i 's/LABEL=swap/\/dev\/mapper\/swap/g' /mnt/etc/fstab
+#echo "swap /dev/disk/by-partlabel/cryptswap /dev/urandom #swap,offset=2048,cipher=aes-xts-plain64,size=256" >> /mnt/etc/crypttab
